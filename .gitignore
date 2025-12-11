@@ -1,0 +1,75 @@
+# Fichiers compilés Java
+*.class
+
+# Fichiers de package
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# Logs
+*.log
+
+# Dossiers de build
+bin/
+build/
+target/
+out/
+
+# Fichiers IDE - Eclipse
+.classpath
+.project
+.settings/
+*.prefs
+
+# Fichiers IDE - IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Fichiers IDE - VS Code
+.vscode/
+*.code-workspace
+
+# Fichiers IDE - NetBeans
+nbproject/private/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+# Fichiers de base de données
+*.db
+*.sqlite
+
+# Fichiers temporaires
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Dossiers de dépendances
+lib/
+libs/
+
+# Fichiers de configuration personnelle
+*.local
+local.properties
+
+# Fichiers de couverture de code
+*.cover
+*.coverage
+
+# Documentation générée
+doc/
+docs/generated/
