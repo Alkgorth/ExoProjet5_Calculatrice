@@ -14,7 +14,7 @@ public class Main {
             System.out.println("3. Factoriser un nombre");
             System.out.println("4. Vérifier si un nombre est premier");
             System.out.println("5. Afficher table de multiplication");
-            System.out.println("6. Mettre à la puissance");
+            System.out.println("6. Calculer la puissance");
             System.out.println("7. Quitter");
             System.out.print("Choisissez une option (1-7) : ");
             
@@ -44,7 +44,7 @@ public class Main {
                         break;
                     case 6:
                         // Appel pour la mise à la puissance
-                        puissance.puissance(scanner);
+                        puissance.aLaPuissance(scanner);
                         break;
                     case 7:
                         continuer = false;
