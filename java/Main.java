@@ -39,6 +39,7 @@ public class Main {
                         premier.estPremier(scanner);
                         break;
                     case 5:
+                        tableMultiplication.afficherTable(scanner);
                         // Appel pour afficher la table de multiplication
 
                         break;
