@@ -11,25 +11,24 @@ Cette application console permet d'effectuer différentes opérations mathémati
 ### Opérations implémentées
 
 - ✅ **Addition** : Additionner deux nombres décimaux
-- ✅ **Factorisation** : Décomposer un nombre en facteurs premiers
-- 🚧 **Vérification de nombres premiers** : Déterminer si un nombre est premier (en développement)
-- 🚧 **Table de multiplication** : Afficher la table de multiplication d'un nombre (en développement)
-- 🚧 **Mise à la puissance** : Calculer la puissance d'un nombre (en développement)
-
-### Fonctionnalités prévues
-
-- 📝 **Addition multiple** : Additionner plusieurs nombres en une seule opération
+- ✅ **Addition multiple** : Additionner plusieurs nombres (jusqu'à 100) en une seule opération
+- ✅ **Factorisation** : Décomposer un nombre en facteurs premiers avec algorithme optimisé
+- ✅ **Vérification de nombres premiers** : Déterminer si un nombre est premier
+- ✅ **Table de multiplication** : Afficher la table de multiplication d'un nombre (1-999) avec alignement formaté
+- ✅ **Mise à la puissance** : Calculer la puissance d'un nombre (exposants positifs uniquement)
 
 ## 🗂️ Structure du projet
 
 ```
 ExoProjet5_Calculatrice/
 └── java/
-    ├── Main.java              # Point d'entrée de l'application avec menu interactif
-    ├── somme.java             # Opération d'addition de deux nombres
-    ├── factorisation.java     # Décomposition en facteurs premiers
-    ├── premier.java           # Vérification de nombres premiers
-    └── sommeMultiple.java     # Addition de plusieurs nombres (à implémenter)
+    ├── Main.java                   # Point d'entrée de l'application avec menu interactif
+    ├── somme.java                  # Addition de deux nombres décimaux
+    ├── sommeMultiple.java          # Addition de plusieurs nombres (max 100)
+    ├── factorisation.java          # Décomposition en facteurs premiers
+    ├── premier.java                # Vérification de nombres premiers
+    ├── tableMultiplication.java    # Table de multiplication avec formatage
+    └── puissance.java              # Calcul de puissance
 ```
 
 ## 🚀 Utilisation
@@ -56,13 +55,14 @@ java Main
 
 ```
 === Calculatrice ===
-1. Additionner
-2. Factoriser un nombre
-3. Vérifier si un nombre est premier
-4. Afficher table de multiplication
-5. Mettre à la puissance
-6. Quitter
-Choisissez une option (1-6) :
+1. Additionner 2 nombres
+2. Additionner plusieurs nombres
+3. Factoriser un nombre
+4. Vérifier si un nombre est premier
+5. Afficher table de multiplication
+6. Calculer la puissance
+7. Quitter
+Choisissez une option (1-7) :
 ```
 
 Entrez le numéro correspondant à l'opération souhaitée et suivez les instructions.
@@ -77,8 +77,12 @@ Entrez le numéro correspondant à l'opération souhaitée et suivez les instruc
 
 ### Algorithmes notables
 
-#### Factorisation en nombres premiers
+#### Addition multiple
+- Utilise un tableau dynamique pour stocker les nombres
+- Limite de 100 nombres maximum pour éviter les abus
+- Validation stricte des entrées
 
+#### Factorisation en nombres premiers
 L'algorithme optimisé :
 1. Extrait tous les facteurs 2
 2. Teste les diviseurs impairs à partir de 3
@@ -86,8 +90,18 @@ L'algorithme optimisé :
 4. Utilise une `ArrayList` pour stocker dynamiquement les facteurs
 
 #### Vérification de nombre premier
-
 Méthode efficace qui teste les diviseurs jusqu'à la racine carrée du nombre.
+
+#### Table de multiplication
+- Affichage formaté avec alignement des colonnes (`printf`)
+- Limite de 1 à 999 pour garantir un affichage optimal
+- Table de 1 à 10 (standard)
+
+#### Calcul de puissance
+- Algorithme itératif avec boucle
+- Gère le cas spécial 0^0 (indéfini)
+- Accepte les bases négatives
+- Refuse les exposants négatifs (simplification volontaire)
 
 ## 🎓 Contexte pédagogique
 
@@ -100,29 +114,30 @@ Ce projet fait partie d'un exercice d'apprentissage de Java, mettant en pratique
 
 ## 📝 État du projet
 
-**Version actuelle** : En développement
+**Version actuelle** : 1.0 - Complète ✅
 
 **Fonctionnalités complètes** :
-- ✅ Menu principal
-- ✅ Addition de deux nombres
+- ✅ Menu principal interactif
+- ✅ Addition de deux nombres décimaux
+- ✅ Addition de plusieurs nombres (jusqu'à 100)
 - ✅ Factorisation en nombres premiers
-
-**En cours de développement** :
-- 🚧 Vérification de nombres premiers
-- 🚧 Table de multiplication
-- 🚧 Mise à la puissance
-- 🚧 Addition multiple
+- ✅ Vérification de nombres premiers
+- ✅ Table de multiplication formatée (1-999)
+- ✅ Calcul de puissance (exposants positifs)
+- ✅ Gestion complète des erreurs et validations
+- ✅ Messages d'erreur clairs et cohérents
 
 ## 🐛 Problèmes connus
 
 Aucun problème majeur identifié pour les fonctionnalités implémentées.
 
-## 🔜 Améliorations futures
+## 🔜 Améliorations futures possibles
 
-- Implémenter toutes les opérations du menu
-- Ajouter d'autres opérations (soustraction, division, modulo)
-- Améliorer l'affichage des résultats
-- Ajouter un historique des calculs
+- Ajouter d'autres opérations (soustraction, division, modulo, racine carrée)
+- Implémenter les exposants négatifs pour la puissance
+- Ajouter un historique des calculs effectués
+- Permettre de sauvegarder les résultats dans un fichier
+- Interface graphique (GUI) avec Swing ou JavaFX
 
 ## 👤 Auteur
 
