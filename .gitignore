@@ -19,11 +19,23 @@ build/
 target/
 out/
 
+# Maven / Spring Boot
+HELP.md
+.mvn/
+!**/src/main/**/target/
+!**/src/test/**/target/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
 # Fichiers IDE - Eclipse
 .classpath
 .project
 .settings/
 *.prefs
+.apt_generated
+.factorypath
+.springBeans
+.sts4-cache
 
 # Fichiers IDE - IntelliJ IDEA
 .idea/
