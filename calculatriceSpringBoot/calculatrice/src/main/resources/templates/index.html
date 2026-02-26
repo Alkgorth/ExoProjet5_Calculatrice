@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculatrice - Accueil</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px 0;
+        }
+        .container {
+            max-width: 900px;
+        }
+        .card {
+            border: none;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-weight: bold;
+        }
+        h1 {
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            margin-bottom: 30px;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+        }
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center mb-4">🧮 Calculatrice Spring Boot</h1>
+
+        <!-- Addition de 2 nombres -->
+        <div class="card">
+            <div class="card-header">
+                ➕ Addition de 2 nombres
+            </div>
+            <div class="card-body">
+                <form action="/calculer/somme" method="post">
+                    <div class="mb-3">
+                        <label for="somme-a" class="form-label">Premier nombre</label>
+                        <input type="number" step="0.01" class="form-control" id="somme-a" 
+                               name="a" placeholder="Ex: 15.5" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="somme-b" class="form-label">Deuxième nombre</label>
+                        <input type="number" step="0.01" class="form-control" id="somme-b" 
+                               name="b" placeholder="Ex: 24.3" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Calculer la somme</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Addition multiple -->
+        <div class="card">
+            <div class="card-header">
+                ➕➕ Addition multiple
+            </div>
+            <div class="card-body">
+                <form action="/calculer/sommeMultiple" method="post">
+                    <div class="mb-3">
+                        <label for="nombres" class="form-label">Liste de nombres (séparés par des virgules)</label>
+                        <input type="text" class="form-control" id="nombres" 
+                               name="nombres" placeholder="Ex: 5, 10, 15, 20, 25" required>
+                        <div class="form-text">
+                            Entrez vos nombres séparés par des virgules. Exemple : 5, 10, 15, 20
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Calculer la somme</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Factorisation -->
+        <div class="card">
+            <div class="card-header">
+                🔢 Factorisation en nombres premiers
+            </div>
+            <div class="card-body">
+                <form action="/calculer/factorisation" method="post">
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label">Nombre à factoriser</label>
+                        <input type="number" class="form-control" id="nombre" 
+                               name="nombre" placeholder="Ex: 60" min="2" required>
+                        <div class="form-text">
+                            Entrez un nombre entier supérieur ou égal à 2
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Factoriser</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+

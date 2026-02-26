@@ -1,14 +1,15 @@
+package com.alkgorth.calculatrice.Service;
+
+import org.springframework.stereotype.Service;
+import java.util.List;
+import java.util.ArrayList;
+
 @Service
-
 public class FactorisationService {
-    
-    public static void factoriser(Scanner scanner) {
 
-        try {
-            System.out.println("Entrer un nombre à factoriser : ");
-            int nombre = Integer.parseInt(scanner.nextLine());
+    public List<Integer> factoriser(int nombre) {
 
-            ArrayList<Integer> facteurs = new ArrayList<>();
+            List<Integer> facteurs = new ArrayList<>();
 
             while (nombre % 2 == 0) {
                 facteurs.add(2);
@@ -28,16 +29,6 @@ public class FactorisationService {
                 facteurs.add(nombre);
             }
 
-            System.out.print("Facteurs premiers : ");
-            for (int i = 0; i < facteurs.size(); i++) {
-                System.out.print(facteurs.get(i) + " ");
-            }
-        } catch (NumberFormatException e) {
-            System.out.println("Entrée invalide. Veuillez entrer un nombre entier, exemple : 42");
-            return;
-        } catch (Exception e) {
-            System.out.println("Une erreur est survenue : " + e.getMessage());
-        }
-        System.out.println();
+            return facteurs;
     }
 }
