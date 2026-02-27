@@ -4,9 +4,6 @@ public class somme {
     
     public static double somme(Scanner scanner) {
 
-        // détail de l'addition
-        // je demande les deux nombres à l'utilisateur
-        // je retourne la somme des deux nombres
         try {
             
             System.out.print("Entrez le premier nombre : ");

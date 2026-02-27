@@ -16,30 +16,36 @@ import java.util.ArrayList;
 @Controller
 public class CalculController {
 
-    // Injection des Services par Spring Boot
     @Autowired
     private SommeService sommeService;
 
     @Autowired
     private FactorisationService factorisationService;
 
-    // Page d'accueil
     @GetMapping("/")
     public String accueil() {
-        return "index"; // Affiche templates/index.html
+        return "index";
     }
 
     // Calcul de somme (addition de 2 nombres)
     @PostMapping("/calculer/somme")
     public String calculerSomme(
+
             @RequestParam double a,
             @RequestParam double b,
             Model model) {
+        try {
 
-        double resultat = sommeService.somme(a, b);
-        model.addAttribute("operation", "Addition");
-        model.addAttribute("resultat", resultat);
-        return "resultat"; // Affiche templates/resultat.html
+            double resultat = sommeService.somme(a, b);
+            model.addAttribute("operation", "Addition");
+            model.addAttribute("resultat", resultat);
+
+        } catch (Exception e) {
+            model.addAttribute("error", "Erreur lors du calcul : " + e.getMessage());
+            return "index";
+        }
+
+        return "resultat";
     }
 
     // Calcul de somme multiple (liste de nombres séparés par des virgules)
@@ -48,18 +54,23 @@ public class CalculController {
             @RequestParam String nombres,
             Model model) {
 
-        // Parse la chaîne "5, 10, 15, 20" en List<Double>
-        String[] parts = nombres.split(",");
-        List<Double> listeNombres = new ArrayList<>();
-        
-        for (String part : parts) {
-            listeNombres.add(Double.parseDouble(part.trim()));
-        }
+        try {
+            String[] parts = nombres.split(",");
+            List<Double> listeNombres = new ArrayList<>();
 
-        double resultat = sommeService.sommeMultiple(listeNombres);
-        model.addAttribute("operation", "Addition Multiple");
-        model.addAttribute("resultat", resultat);
-        return "resultat"; // Affiche templates/resultat.html
+            for (String part : parts) {
+                listeNombres.add(Double.parseDouble(part.trim()));
+            }
+
+            double resultat = sommeService.sommeMultiple(listeNombres);
+            model.addAttribute("operation", "Addition Multiple");
+            model.addAttribute("resultat", resultat);
+
+        } catch (Exception e) {
+            model.addAttribute("error", "Format invalide, veuillez entrer des nombres séparés par des virgules.");
+            return "index";
+        }
+        return "resultat";
     }
 
     // Calcul de factorisation
@@ -67,10 +78,15 @@ public class CalculController {
     public String calculerFactorisation(
             @RequestParam int nombre,
             Model model) {
+        try {
+            List<Integer> facteurs = factorisationService.factoriser(nombre);
+            model.addAttribute("operation", "Factorisation");
+            model.addAttribute("facteurs", facteurs);
 
-        List<Integer> facteurs = factorisationService.factoriser(nombre);
-        model.addAttribute("operation", "Factorisation");
-        model.addAttribute("facteurs", facteurs);
-        return "resultat"; // Affiche templates/resultat.html
+        } catch (Exception e) {
+            model.addAttribute("error", "Erreur lors de la factorisation : " + e.getMessage());
+            return "index";
+        }
+        return "resultat";
     }
 }
