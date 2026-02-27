@@ -7,12 +7,10 @@ public class puissance {
         try {
             System.out.print("Entrez la base : ");
             double base = Double.parseDouble(scanner.nextLine());
-            // if (base <= 0) {
-            //     System.out.println("Veuillez entrer un nombre réel positif pour la base.");
-            //     return 0;
-            // }
+
             System.out.print("Entrez l'exposant : ");
             int exposant = Integer.parseInt(scanner.nextLine());
+
             if (base == 0 && exposant == 0) {
                 System.out.println("0 à la puissance 0 est mathématiquement indéfini.");
                 return 0;
@@ -37,33 +35,3 @@ public class puissance {
         return 0;
     }
 }
-
-
-/*
-┌─────────────────────────────────────────┐
-│  1. DEMANDER LES ENTRÉES                │
-│     - La base (double ?)                │
-│     - L'exposant (int ?)                │
-└─────────────────────────────────────────┘
-              ↓
-┌─────────────────────────────────────────┐
-│  2. VALIDER LES ENTRÉES                 │
-│     - Cas particuliers ?                │
-│     - Exposant négatif ? (pour avancé)  │
-└─────────────────────────────────────────┘
-              ↓
-┌─────────────────────────────────────────┐
-│  3. CALCULER LE RÉSULTAT                │
-│     - Algorithme de puissance           │
-└─────────────────────────────────────────┘
-              ↓
-┌─────────────────────────────────────────┐
-│  4. AFFICHER LE RÉSULTAT                │
-│     - Message clair : "2^3 = 8"         │
-└─────────────────────────────────────────┘
-              ↓
-┌─────────────────────────────────────────┐
-│  5. GÉRER LES EXCEPTIONS                │
-│     - try-catch comme les autres        │
-└─────────────────────────────────────────┘
-*/
