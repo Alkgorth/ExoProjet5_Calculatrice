@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.alkgorth.calculatrice.Service.SommeService;
 import com.alkgorth.calculatrice.Service.FactorisationService;
+import com.alkgorth.calculatrice.Service.PremierService;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -21,6 +22,9 @@ public class CalculController {
 
     @Autowired
     private FactorisationService factorisationService;
+
+    @Autowired
+    private PremierService premierService;
 
     @GetMapping("/")
     public String accueil() {
@@ -85,6 +89,23 @@ public class CalculController {
 
         } catch (Exception e) {
             model.addAttribute("error", "Erreur lors de la factorisation : " + e.getMessage());
+            return "index";
+        }
+        return "resultat";
+    }
+
+    // Méthode pour nombre premier
+    @PostMapping("/calculer/estPremier")
+    public String calculerEstPremier(
+            @RequestParam int nombre,
+            Model model) {
+        try {
+            boolean estPremier = premierService.estPremier(nombre);
+            model.addAttribute("operation", "Nombre Premier");
+            model.addAttribute("estPremier", estPremier);
+
+        } catch (Exception e) {
+            model.addAttribute("error", "Erreur lors de la vérification du nombre premier : " + e.getMessage());
             return "index";
         }
         return "resultat";
