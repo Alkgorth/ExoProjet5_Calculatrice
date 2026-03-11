@@ -21,10 +21,10 @@
 
         <!-- Affichage du nombre premier -->
         <div th:if="${resultat.estPremier != null}" class="result-value">
-            <div th:if="${resultat.estPremier}" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+            <div th:if="${resultat.estPremier}" class="result-value result-premier-true">
                 ✨ Ce nombre EST premier !
             </div>
-            <div th:unless="${resultat.estPremier}" style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);">
+            <div th:unless="${resultat.estPremier}" class="result-value result-premier-false">
                 ❌ Ce nombre N'est PAS premier
             </div>
         </div>
@@ -35,7 +35,7 @@
             <div>
                 <span th:each="facteur, iterStat : ${resultat.facteurs}">
                     <span class="facteur-item" th:text="${facteur}">2</span>
-                    <span th:if="${!iterStat.last}" style="font-size: 1.5rem; color: #667eea;"> × </span>
+                    <span th:if="${!iterStat.last}" class="facteur-separator"> × </span>
                 </span>
             </div>
         </div>
@@ -48,7 +48,7 @@
         <!-- Affichage de la table de multiplication -->
         <div th:if="${resultat.table != null}" class="facteurs-list">
             <h5 class="mb-3">Table de multiplication de <span th:text="${resultat.nombre}">7</span> :</h5>
-            <div style="background: white; padding: 15px; border-radius: 8px; font-family: monospace; line-height: 1.8;">
+            <div class="table-multiplication">
                 <div th:each="ligne : ${resultat.table}" th:text="${ligne}">
                     3 x  1 =    3
                 </div>

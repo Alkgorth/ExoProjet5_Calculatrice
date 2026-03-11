@@ -35,6 +35,14 @@ body {
   box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
 }
 
+.result-value.result-premier-true {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+
+.result-value.result-premier-false {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+}
+
 .facteurs-list {
   background: #f8f9fa;
   padding: 20px;
@@ -51,6 +59,19 @@ body {
   border-radius: 25px;
   font-weight: bold;
   font-size: 1.2rem;
+}
+
+.facteur-separator {
+  font-size: 1.5rem;
+  color: #667eea;
+}
+
+.table-multiplication {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  font-family: monospace;
+  line-height: 1.8;
 }
 
 .btn-home {
