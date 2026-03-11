@@ -6,10 +6,16 @@ import org.springframework.stereotype.Service;
 public class PremierService {
 
     public boolean estPremier(int nombre) {
-        if (nombre <= 1) {
+        if (nombre < 2) {
             return false;
         }
-        for (int i = 2; i <= Math.sqrt(nombre); i++) {
+        if (nombre == 2) {
+            return true;
+        }
+        if (nombre % 2 == 0) {
+            return false;
+        }
+        for (int i = 3; i <= Math.sqrt(nombre); i += 2) {
             if (nombre % i == 0) {
                 return false;
             }

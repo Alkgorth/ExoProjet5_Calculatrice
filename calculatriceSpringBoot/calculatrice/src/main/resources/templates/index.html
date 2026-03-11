@@ -148,6 +148,73 @@
           </form>
         </div>
       </div>
+
+      <!-- Puissance -->
+      <div class="card">
+        <div class="card-header">⚡ Calcul de puissance</div>
+        <div class="card-body">
+          <form action="/calculer/puissance" method="post">
+            <div class="mb-3">
+              <label for="base" class="form-label">Base</label>
+              <input
+                type="number"
+                step="0.01"
+                class="form-control"
+                id="base"
+                name="base"
+                placeholder="Ex: 2"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="exposant" class="form-label">Exposant</label>
+              <input
+                type="number"
+                class="form-control"
+                id="exposant"
+                name="exposant"
+                placeholder="Ex: 10"
+                min="0"
+                required
+              />
+              <div class="form-text">
+                Entrez un exposant positif (les exposants négatifs ne sont pas supportés)
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">
+              Calculer la puissance
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Table de Multiplication -->
+      <div class="card">
+        <div class="card-header">✕ Table de multiplication</div>
+        <div class="card-body">
+          <form action="/calculer/tableMultiplication" method="post">
+            <div class="mb-3">
+              <label for="nombreTable" class="form-label">Nombre</label>
+              <input
+                type="number"
+                class="form-control"
+                id="nombreTable"
+                name="nombre"
+                placeholder="Ex: 7"
+                min="1"
+                max="999"
+                required
+              />
+              <div class="form-text">
+                Entrez un nombre entre 1 et 999
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">
+              Afficher la table
+            </button>
+          </form>
+        </div>
+      </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
