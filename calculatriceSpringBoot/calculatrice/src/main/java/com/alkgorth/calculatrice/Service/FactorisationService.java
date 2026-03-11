@@ -8,27 +8,36 @@ import java.util.ArrayList;
 public class FactorisationService {
 
     public List<Integer> factoriser(int nombre) {
+        if (nombre < 0) {
+            throw new IllegalArgumentException("La factorisation n'est pas définie pour les nombres négatifs.");
+        }
+        if (nombre == 0) {
+            throw new IllegalArgumentException("La factorisation de 0 n'est pas définie.");
+        }
+        if (nombre == 1) {
+            return new ArrayList<>(); // 1 n'a pas de facteurs premiers
+        }
 
-            List<Integer> facteurs = new ArrayList<>();
+        List<Integer> facteurs = new ArrayList<>();
 
-            while (nombre % 2 == 0) {
-                facteurs.add(2);
-                nombre /= 2;
+        while (nombre % 2 == 0) {
+            facteurs.add(2);
+            nombre /= 2;
+        }
+
+        int diviseur = 3;
+        while (diviseur <= Math.sqrt(nombre)) {
+            while (nombre % diviseur == 0) {
+                facteurs.add(diviseur);
+                nombre /= diviseur;
             }
+            diviseur += 2;
+        }
 
-            int diviseur = 3;
-            while (diviseur <= Math.sqrt(nombre)) {
-                while (nombre % diviseur == 0) {
-                    facteurs.add(diviseur);
-                    nombre /= diviseur;
-                }
-                diviseur += 2;
-            }
+        if (nombre > 2) {
+            facteurs.add(nombre);
+        }
 
-            if (nombre > 2) {
-                facteurs.add(nombre);
-            }
-
-            return facteurs;
+        return facteurs;
     }
 }
