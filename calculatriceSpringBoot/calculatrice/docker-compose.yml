@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  traefik:
+    image: traefik:v2.10
+    container_name: traefik
+    restart: unless-stopped
+    command:
+      - "--api.insecure=false"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.websecure.address=:443"
+      - "--certificatesresolvers.letsencrypt.acme.httpchallenge=true"
+      - "--certificatesresolvers.letsencrypt.acme.httpchallenge.entrypoint=web"
+      - "--certificatesresolvers.letsencrypt.acme.email=votre-email@example.com"
+      - "--certificatesresolvers.letsencrypt.acme.storage=/letsencrypt/acme.json"
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./letsencrypt:/letsencrypt
+    networks:
+      - web
+
+  calculatrice:
+    build: .
+    container_name: calculatrice-web
+    restart: unless-stopped
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.calculatrice.rule=Host(`calculatrice.votredomaine.com`)"
+      - "traefik.http.routers.calculatrice.entrypoints=web,websecure"
+      - "traefik.http.routers.calculatrice.tls.certresolver=letsencrypt"
+      - "traefik.http.services.calculatrice.loadbalancer.server.port=8080"
+      - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
+      - "traefik.http.routers.calculatrice-http.middlewares=redirect-to-https@docker"
+    networks:
+      - web
+    depends_on:
+      - traefik
+
+networks:
+  web:
+    external: false
