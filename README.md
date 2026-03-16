@@ -33,25 +33,130 @@ ExoProjet5_Calculatrice/
 
 ## 🚀 Utilisation
 
-### Prérequis
+### 📱 Version Web - Spring Boot (Recommandée pour le portfolio)
+
+Il existe maintenant une **version web moderne** de cette calculatrice utilisée pour le portfolio !
+
+#### 🐳 Lancer avec Docker (Local)
+
+**Prérequis** :
+- Docker installé et démarré
+- Être dans le dossier `calculatriceSpringBoot/calculatrice/`
+
+**Étapes** (à exécuter dans le terminal, une après l'autre) :
+
+##### **1️⃣ Compiler le projet**
+```bash
+.\mvnw.cmd clean package
+```
+Cette commande :
+- Télécharge les dépendances Maven
+- Compile le code Java
+- Crée un fichier `.jar` dans le dossier `target/`
+- ⏳ Cela peut prendre 2-5 minutes la première fois
+
+**Attendez le message :**
+```
+[INFO] BUILD SUCCESS
+```
+
+---
+
+##### **2️⃣ Construire l'image Docker**
+```bash
+docker build -t calculatrice-web:latest .
+```
+Cette commande :
+- Crée une image Docker multi-stage
+- Stage 1 : Compile avec Maven
+- Stage 2 : Crée une image runtime minimale (70MB)
+- Les fichiers source sont supprimés de l'image finale (sécurité 🔒)
+
+**Attendez le message :**
+```
+Successfully tagged calculatrice-web:latest
+```
+
+---
+
+##### **3️⃣ Lancer le container**
+```bash
+docker run -p 8080:8080 calculatrice-web:latest
+```
+Cette commande :
+- Lance le container
+- Mappe le port 8080 du container au port 8080 local
+- L'application démarre automatiquement
+
+**Vous verrez :**
+```
+Started CalculatriceApplication in X seconds (JVM running for X.XXs)
+```
+
+---
+
+#### 🌐 Accéder à l'application
+
+Ouvrez votre navigateur et allez à :
+```
+http://localhost:8080
+```
+
+Vous verrez la calculatrice web avec une belle interface Bootstrap ! 🎨
+
+---
+
+#### ⏹️ Arrêter l'application
+
+Dans le terminal, appuyez sur :
+```
+Ctrl + C
+```
+
+---
+
+#### 📋 Commandes utiles Docker
+
+```bash
+# Voir les containers en cours d'exécution
+docker ps
+
+# Voir les images disponibles
+docker images
+
+# Voir les logs en temps réel
+docker logs -f calculatrice-web
+
+# Supprimer l'image
+docker rmi calculatrice-web:latest
+
+# Nettoyer les images inutilisées
+docker image prune -f
+```
+
+---
+
+### 💻 Version Console - Java pur (Original)
+
+#### Prérequis
 
 - Java JDK 8 ou supérieur
 - Terminal/Invite de commandes
 
-### Compilation
+#### Compilation
 
 ```bash
 cd java
 javac *.java
 ```
 
-### Exécution
+#### Exécution
 
 ```bash
 java Main
 ```
 
-### Navigation dans le menu
+#### Navigation dans le menu
 
 ```
 === Calculatrice ===
